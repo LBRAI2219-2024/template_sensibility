@@ -140,6 +140,7 @@ write_rparam <- function(dataset, files){
     
   }
   text <- gsub("\tNA", "", text)
+  text <- gsub("\r\n", "\n", text)
   for(f in files){
     cat(text, file=f)
   }
@@ -156,6 +157,7 @@ write_pparam <- function(plant, files){
   }
   
   text <- gsub("\tNA", "", text)
+  text <- gsub("\r\n", "\n", text)
 
   for(f in files){
     cat(text, file=f)
