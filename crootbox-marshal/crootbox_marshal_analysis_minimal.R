@@ -49,8 +49,8 @@ source("inputs/functions/getSUF.R") # MARSHAL
 ########################################################################
 
 # We load the default parameter sets for the CRootBox simulation 
-rparam <- read_rparam(path = "inputs/param.rparam")
-pparam <- read_pparam(path = "inputs/param.pparam")
+rparam <- read_rparam(path = "inputs/crootbox_source/modelparameter/param.rparam")
+pparam <- read_pparam(path = "inputs/crootbox_source/modelparameter/param.pparam")
 
 # Check the parameter files
 head(rparam)
@@ -65,8 +65,8 @@ write_rparam(rparam, "inputs/param.rparam")
 write_pparam(pparam, "inputs/param.pparam")
 
 # Run crootbox
-system("inputs/crootbox.out") # Run crootbox for mac
-#system("inputs/crootbox.exe") # Run crootbox for windows
+#system("inputs/crootbox.out") # Run crootbox for mac
+system("inputs/crootbox.exe") # Run crootbox for windows
 
 # Get the results of the simulation
 rootsystem <- fread("outputs/current_rootsystem.txt", header = T)
@@ -131,8 +131,8 @@ vitesse_secondaire_vec <- c(0.1, 0.2, 0.3, 0.4, 0.5) # 3 growth rates for second
 simulation_time <- 30
 
 # B. We load the default parameter sets for the simulation 
-rparam <- read_rparam(path = "inputs/param.rparam")
-pparam <- read_pparam(path = "inputs/param.pparam")
+rparam <- read_rparam(path = "inputs/crootbox_source/modelparameter/param.rparam")
+pparam <- read_pparam(path = "inputs/crootbox_source/modelparameter/param.pparam")
 
 # C. We create variables that will contain the 
 # results of our crootbox simulations
@@ -169,7 +169,8 @@ for(vp in vitesse_primaire_vec){
     write_pparam(pparam, "inputs/param.pparam")
     
     # Run crootbox
-    system("inputs/crootbox.out") # Run crootbox for windows
+    #system("inputs/crootbox.out") # Run crootbox for Mac
+    system("inputs/crootbox.exe") # Run crootbox for windows
     
     # Load the simulated data into R to process it and to store it for further use
     current_rootsystem <- fread("outputs/current_rootsystem.txt", header = T)
